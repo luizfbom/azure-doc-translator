@@ -1,11 +1,15 @@
 import requests
 from docx import Document
 import os
+from dotenv import load_dotenv
 
-subscription_key = '6heKDjunL76YjCcrA3KM3NgD6SnFeObvyvnxx66betSHIEkneonHJQQJ99AKAC8vTInXJ3w3AAAbACOG2uUD'
-endpoint = 'https://api.cognitive.microsofttranslator.com/'
-location = 'westus2'
-target_language = 'pt-BR'
+# Load environment variables
+load_dotenv()
+
+subscription_key = os.getenv('AZURE_SUBSCRIPTION_KEY')
+endpoint = os.getenv('AZURE_ENDPOINT')
+location = os.getenv('AZURE_LOCATION')
+target_language = os.getenv('TARGET_LANGUAGE')
 
 def traduzir_documento(documento):
     doc = Document(documento)
